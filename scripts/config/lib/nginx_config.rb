@@ -11,6 +11,7 @@ class NginxConfig
     https_only: false,
     basic_auth: false,
     basic_auth_htpasswd_path: "/app/.htpasswd",
+    max_body_size: "1M",
     worker_connections: 512,
     resolver: "8.8.8.8",
     logging: {
@@ -50,6 +51,7 @@ class NginxConfig
 
     json["clean_urls"] ||= DEFAULT[:clean_urls]
     json["https_only"] ||= DEFAULT[:https_only]
+    json["max_body_size"] ||= DEFAULT[:max_body_size]
 
     json["basic_auth"] = true unless ENV['BASIC_AUTH_USERNAME'].nil?
     json["basic_auth"] ||= DEFAULT[:basic_auth]
